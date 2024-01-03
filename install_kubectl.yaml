@@ -1,0 +1,39 @@
+- hosts: localhost
+  become: yes
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: yes
+
+    - name: Install prerequisites
+      apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gpg
+        state: present
+
+    - name: Create /etc/apt/keyrings directory if it doesn't exist
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Add Kubernetes key
+      shell: yes | curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+    - name: Update packages
+      apt:
+        update_cache: yes
+
+    - name: Install kubectl
+      apt:
+        name: kubectl
+        state: present
+
+    - name: Verify kubectl is working
+      command: kubectl version --client
+      register: result
+
+    - debug: var=result.stdout_lines
