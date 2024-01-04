@@ -34,7 +34,7 @@
         dest: /etc/modules-load.d/containerd.conf
         force: no
 
-    - name: Configure module for containerd.
+    - name: Configure module for containerd.conf
       blockinfile:
         path: /etc/modules-load.d/containerd.conf
         block: |
