@@ -1,39 +1,29 @@
-- hosts: localhost
-  become: yes
+- name: Install kubectl 1.28
+  hosts: localhost
+  gather_facts: false
+
   tasks:
-    - name: Update packages
+    - name: Install apt-transport-https, curl, and gnupg
+      become: yes
       apt:
-        update_cache: yes
-
-    - name: Install prerequisites
-      apt:
-        name:
-          - apt-transport-https
-          - ca-certificates
-          - curl
-          - gpg
+        name: ['apt-transport-https', 'curl', 'gnupg']
         state: present
 
-    - name: Create /etc/apt/keyrings directory if it doesn't exist
-      file:
-        path: /etc/apt/keyrings
-        state: directory
-        mode: '0755'
-
-    - name: Add Kubernetes key
-      shell: yes | curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key | sudo gpg --yes --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
-
-    - name: Update packages
-      apt:
-        update_cache: yes
-
-    - name: Install kubectl
-      apt:
-        name: kubectl
+    - name: Add Kubernetes apt-key
+      become: yes
+      apt_key:
+        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
         state: present
 
-    - name: Verify kubectl is working
-      command: kubectl version --client
-      register: result
+    - name: Add Kubernetes apt repository
+      become: yes
+      apt_repository:
+        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+        state: present
+        filename: kubernetes
 
-    - debug: var=result.stdout_lines
+    - name: Install kubectl 1.28
+      become: yes
+      apt:
+        name: kubectl=1.28.0-00
+        state: present

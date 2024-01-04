@@ -14,6 +14,7 @@ To generate an SSH key pair and start the ssh-agent, run the following commands:
 ssh-keygen -t rsa -b 2048 -f ~/.ssh/id_rsa
 eval `ssh-agent`
 ssh-add ~/.ssh/id_rsa
+ssh-copy-id  <username>@<ip-address>
 ```
 
 To ensure the ssh-agent starts and the keys are added every time a new terminal session is opened, add the following lines to your shell's profile script (`.bashrc`, `.bash_profile`, or `.zshrc` for Bash or Zsh):

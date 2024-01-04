@@ -1,8 +1,8 @@
-- hosts: all
+- hosts: "masters,workers"
   become: yes
 
   vars_prompt:
-    - name: "new_user:wq"
+    - name: "new_user"
       prompt: "Account need to be create in remote server."
       private: no
 
