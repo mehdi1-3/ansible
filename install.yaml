@@ -1,4 +1,5 @@
-- hosts: "masters-ansible, workers-ansible"
+- name: install kubernetes cluster
+  hosts: "masters-ansible, workers-ansible"
   remote_user: ansible
   become: yes
   become_method: sudo

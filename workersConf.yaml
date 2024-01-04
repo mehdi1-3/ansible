@@ -1,4 +1,5 @@
-- hosts: workers-ansible
+- name: workers configuration
+  hosts: workers-ansible
   remote_user: ansible
   become: yes
   become_method: sudo

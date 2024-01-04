@@ -1,4 +1,5 @@
-- hosts: "masters,workers"
+- name: add new user
+  hosts: "masters,workers"
   become: yes
 
   vars_prompt:
