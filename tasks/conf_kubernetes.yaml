@@ -1,0 +1,18 @@
+- name: Installing Kubernetes Cluster Packages.
+  apt:
+    name:
+      - "kubeadm={{ version }}"
+      - "kubectl={{ version }}"
+      - "kubelet={{ version }}"
+    state: present
+
+- name: Enable service kubelet, and enable persistently
+  service:
+    name: kubelet
+    enabled: yes
+
+- name: Reboot all the kubernetes nodes.
+  shell: sleep 5 && shutdown -r now "Reboot initiated by Ansible"
+  async: 1
+  poll: 0
+  ignore_errors: true

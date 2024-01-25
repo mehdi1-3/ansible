@@ -61,7 +61,7 @@ This playbook sets up the master node. It pulls the required images, resets and 
 Usage:
 
 ```bash
-ansible-playbook -i hosts masterConf.yaml
+ansible-playbook -i inventory masterConf.yaml
 ```
 
 ### workersConf.yaml
@@ -71,7 +71,7 @@ This playbook sets up the worker nodes. It copies the join command token to the 
 Usage:
 
 ```bash
-ansible-playbook -i hosts workersConf.yaml
+ansible-playbook -i inventory workersConf.yaml
 ```
 
 ### install_kubectl.yaml

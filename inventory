@@ -1,0 +1,17 @@
+master
+worker-1
+worker-2
+
+[masters]
+master
+[workers]
+worker-1
+worker-2
+
+[all:children]
+masters
+workers
+
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3

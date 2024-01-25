@@ -1,29 +1,15 @@
 - name: Install kubectl 1.28
   hosts: localhost
   gather_facts: false
+  vars:
+    version: 1.28.0-00
 
   tasks:
-    - name: Install apt-transport-https, curl, and gnupg
-      become: yes
-      apt:
-        name: ['apt-transport-https', 'curl', 'gnupg']
-        state: present
-
-    - name: Add Kubernetes apt-key
-      become: yes
-      apt_key:
-        url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
-        state: present
-
-    - name: Add Kubernetes apt repository
-      become: yes
-      apt_repository:
-        repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
-        state: present
-        filename: kubernetes
+    - include: tasks/tools.yaml
+    - include: tasks/add_kube_key.yaml
 
     - name: Install kubectl 1.28
       become: yes
       apt:
-        name: kubectl=1.28.0-00
+        name: "kubectl={{ version }}"
         state: present

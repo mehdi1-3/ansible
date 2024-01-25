@@ -1,0 +1,36 @@
+- name: Add Docker’s official GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker Repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+    filename: docker
+    update_cache: yes
+
+- name: "Update cache & Full system update"
+  apt:
+    update_cache: true
+    upgrade: dist
+    cache_valid_time: 3600
+    force_apt_get: true
+
+- name: Install containerd.
+  apt:
+    name:
+      - containerd.io
+    state: present
+
+- name: Configure containerd.
+  file:
+    path: /etc/containerd
+    state: directory
+
+- name: Enable containerd service, and start it.
+  systemd:
+    name: containerd
+    state: restarted
+    enabled: yes
+    daemon-reload: yes

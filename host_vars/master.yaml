@@ -1,0 +1,3 @@
+ansible_host: 10.101.1.210
+ansible_user: master
+ansible_connection: ssh

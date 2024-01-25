@@ -1,0 +1,5 @@
+- name: Install  generic tools tools
+  become: yes
+  apt:
+    name: ['apt-transport-https', 'curl', 'gnupg', 'software-properties-common', 'ca-certificates' , 'gnupg-agent']
+    state: present

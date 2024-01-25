@@ -1,0 +1,3 @@
+ansible_host: 10.101.1.212
+ansible_user: worker-2
+ansible_connection: ssh
