@@ -1,6 +1,8 @@
 - name: Install kubectl 1.28
   hosts: localhost
   gather_facts: false
+  any_errors_fatal: true
+
   vars:
     version: 1.28.0-00
 

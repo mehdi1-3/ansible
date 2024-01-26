@@ -4,6 +4,7 @@
   become_method: sudo
   become_user: root
   gather_facts: yes
+  any_errors_fatal: true
 
   tasks:
     - include: tasks/tools.yaml
