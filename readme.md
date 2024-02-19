@@ -20,7 +20,7 @@ ssh-copy-id  <username>@<ip-address>
 To ensure the ssh-agent starts and the keys are added every time a new terminal session is opened, add the following lines to your shell's profile script (`.bashrc`, `.bash_profile`, or `.zshrc` for Bash or Zsh):
 
 ```bash
-if ! pgrep -q -u "$USER" ssh-agent; then
+if ! pgrep -u "$USER" ssh-agent; then
     ssh-agent > ~/.ssh-agent-env
 fi
 
