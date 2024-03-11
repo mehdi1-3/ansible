@@ -3,9 +3,6 @@
   gather_facts: false
   any_errors_fatal: true
 
-  vars:
-    version: 1.28.0-00
-
   tasks:
     - import_tasks: tasks/tools.yaml
     - import_tasks: tasks/add_kube_key.yaml
