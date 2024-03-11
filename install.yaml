@@ -7,9 +7,9 @@
   any_errors_fatal: true
 
   tasks:
-    - include: tasks/tools.yaml
+    - import_tasks: tasks/tools.yaml
  #     when:
-    - include: tasks/conf_machines.yaml
-    - include: tasks/conf_containerd.yaml
-    - include: tasks/add_kube_key.yaml
-    - include: tasks/conf_kubernetes.yaml
+    - import_tasks: tasks/conf_machines.yaml
+    - import_tasks: tasks/conf_containerd.yaml
+    - import_tasks: tasks/add_kube_key.yaml
+    - import_tasks: tasks/conf_kubernetes.yaml

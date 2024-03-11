@@ -4,5 +4,5 @@
   any_errors_fatal: true
 
   tasks:
-    - include: tasks/create_user.yaml
-    - include: tasks/clean_machine.yaml
+    - import_tasks: tasks/create_user.yaml
+    - import_tasks: tasks/clean_machine.yaml

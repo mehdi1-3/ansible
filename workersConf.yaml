@@ -7,4 +7,4 @@
   gather_facts: yes
   any_errors_fatal: true
   tasks:
-    - include: tasks/join_worker-nodes.yaml
+    - import_tasks: tasks/join_worker-nodes.yaml

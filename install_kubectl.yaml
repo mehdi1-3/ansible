@@ -7,8 +7,8 @@
     version: 1.28.0-00
 
   tasks:
-    - include: tasks/tools.yaml
-    - include: tasks/add_kube_key.yaml
+    - import_tasks: tasks/tools.yaml
+    - import_tasks: tasks/add_kube_key.yaml
 
     - name: Install kubectl 1.28
       become: yes
