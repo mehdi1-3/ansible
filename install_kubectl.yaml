@@ -2,13 +2,13 @@
   hosts: localhost
   gather_facts: false
   any_errors_fatal: true
+  become: yes
 
   tasks:
     - import_tasks: tasks/tools.yaml
     - import_tasks: tasks/add_kube_key.yaml
 
     - name: Install kubectl 1.28
-      become: yes
       apt:
         name: "kubectl={{ version }}"
         state: present
