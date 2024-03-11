@@ -22,7 +22,7 @@
   authorized_key:
     user: "{{ new_user }}"
     state: present
-    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/cluster.pub') }}"
+    key: "{{ lookup('file', lookup('env','HOME') + '/.ssh/kube.pub') }}"
 
 - name: Print the created user.
   shell: id "{{ new_user }}"
