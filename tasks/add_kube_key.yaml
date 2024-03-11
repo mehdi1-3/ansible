@@ -1,11 +1,11 @@
 - name: Add Google official GPG key
   apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    url: https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key 
     state: present
 
 - name: Add Kubernetes Repository
   apt_repository:
-    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/kubernetes.gpg] http://apt.kubernetes.io/ kubernetes-xenial main
+    repo: deb https://pkgs.k8s.io/core:/stable:/v1.28/deb/ 
     state: present
     filename: kubernetes
     mode: 0600
