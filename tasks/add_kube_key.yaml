@@ -10,6 +10,19 @@
     filename: kubernetes
     mode: 0600
 
+
+
+- name: Get Kubernetes package key
+  shell: curl -fsSL {{ k8s_url_apt_key }} | gpg --dearmor -o {{ k8s_gpgpath }}
+  args:
+    creates: "{{ k8s_gpgpath }}"  
+
+
+- name: Install Kubernetes repository
+  apt_repository:
+    filename: kubernetes
+    repo: "deb [signed-by={{ k8s_gpgpath }}] {{ k8s_repository }} /"    
+
 - name: "Update cache & Full system update"
   apt:
     update_cache: true
