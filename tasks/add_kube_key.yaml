@@ -5,7 +5,7 @@
 
 - name: Add Kubernetes Repository
   apt_repository:
-    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    repo: deb [arch=amd64 signed-by=/etc/apt/keyrings/kubernetes.gpg] http://apt.kubernetes.io/ kubernetes-xenial main
     state: present
     filename: kubernetes
     mode: 0600
