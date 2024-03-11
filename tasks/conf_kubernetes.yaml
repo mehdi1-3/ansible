@@ -5,6 +5,7 @@
       - "kubectl={{ version }}"
       - "kubelet={{ version }}"
     state: present
+    allow_downgrade: true
 
 - name: Enable service kubelet, and enable persistently
   service:
