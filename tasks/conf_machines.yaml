@@ -5,9 +5,9 @@
     owner: root
     group: root
 
-# - name: "Updating hostnames"
-#   ansible.builtin.hostname:
-#     name: "{{ new_hostname }}"
+- name: "Updating hostnames"
+  ansible.builtin.hostname:
+    name: "{{ new_hostname }}"
 
 - name: Make the Swap inactive
   command: swapoff -a
