@@ -1,4 +1,4 @@
-- name: Install kubectl 1.29
+- name: Install kubectl 1.28
   hosts: localhost
   gather_facts: false
   any_errors_fatal: true
