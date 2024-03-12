@@ -1,4 +1,4 @@
-- name: Install kubectl 1.28
+- name: Install kubectl 1.29
   hosts: localhost
   gather_facts: false
   any_errors_fatal: true
@@ -8,7 +8,8 @@
     - import_tasks: tasks/tools.yaml
     - import_tasks: tasks/add_kube_key.yaml
 
-    - name: Install kubectl 1.28
+    - name: Install kubectl 1.29
       apt:
         name: "kubectl={{ version }}"
         state: present
+        force: yes # allow downgrades

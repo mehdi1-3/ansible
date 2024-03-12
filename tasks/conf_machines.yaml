@@ -15,8 +15,9 @@
 - name: Remove Swap entry from /etc/fstab.
   lineinfile:
     dest: /etc/fstab
-    regexp: swap
+    regexp: '^([^#].*?\sswap\s+sw\s+.*)$'
     state: absent
+    
 - name: Create a empty file for containerd module.
   copy:
     content: ""

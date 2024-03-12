@@ -2,7 +2,7 @@
   apt:
     name:
       - "kubeadm={{ version }}"
-      - "kubectl={{ version }}"
+
       - "kubelet={{ version }}"
     state: present
     allow_downgrade: true
@@ -11,6 +11,21 @@
   service:
     name: kubelet
     enabled: yes
+
+- name: load br_netfilter kernel module
+  modprobe:
+    name: br_netfilter
+    state: present
+
+- name: set bridge-nf-call-iptables
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+
+- name: set ip_forward
+  sysctl:
+    name: net.ipv4.ip_forward
+    value: 1
 
 - name: Reboot all the kubernetes nodes.
   shell: sleep 5 && shutdown -r now "Reboot initiated by Ansible"
