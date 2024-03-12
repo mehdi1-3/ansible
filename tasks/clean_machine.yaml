@@ -33,5 +33,3 @@
     cache_valid_time: 3600
     force_apt_get: true
 
-- name: reboot and wait for reboot to complete
-    reboot:    
