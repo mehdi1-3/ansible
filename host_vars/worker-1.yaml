@@ -1,3 +1,4 @@
 ansible_host: 10.101.1.212
 ansible_user: worker1
 ansible_connection: ssh
+new_hostname: worker1

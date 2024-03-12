@@ -1,3 +1,5 @@
 ansible_host: 10.101.1.211
 ansible_user: master1
 ansible_connection: ssh
+new_hostname: master1
+
